@@ -11,9 +11,8 @@ import mysql from 'mysql2/promise';
 import { env } from '$env/dynamic/private';
 
 export const db = mysql.createPool({
-  host: env.DB_HOST,
-  port: env.DB_PORT,
-  user: env.DB_USER,
-  password: env.DB_PASSWORD,
-  database: env.DB_NAME,
+  host: env.MYSQLHOST || 'localhost',
+  user: env.MYSQLUSER || 'root',
+  password: env.MYSQLPASSWORD || '',
+  database: env.MYSQLDATABASE || 'poe',
 });
