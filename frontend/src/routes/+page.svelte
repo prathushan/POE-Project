@@ -1,6 +1,7 @@
 <script>
   import { onMount } from "svelte";
-
+ export let data;
+  let filings = data.filings;
   let search = $state("");
   let filings = $state([]);
   let selectedFiling = $state(null);
@@ -327,7 +328,13 @@
       </div>
     </div>
   </div>
- 
+{#if filings.length > 0}
+  {#each filings as item}
+    <div>{item.company_name}</div>
+  {/each}
+{:else}
+  <p>No data</p>
+{/if} 
 </div>
 
 <style>
